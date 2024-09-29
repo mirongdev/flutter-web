@@ -15,10 +15,11 @@ jobs:
 
       - name: Build Project
         run: |
-          # Commands to build your site
-          # If you have a static site, just move files to `web`
+          # Membuat folder 'web' jika belum ada
           mkdir -p web
-          cp -r * web/
+          # Salin semua file kecuali folder 'web' ke dalam folder 'web'
+          shopt -s extglob
+          cp -r !(web) web/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
